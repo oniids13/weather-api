@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+    border-bottom: 3px solid black;
+}
+
+header form {
+    align-self: center;
+}
+
+.card {
+    border: 1px solid black;
+    border-radius: 20px;
+    text-align: center;
+}
