@@ -4,9 +4,16 @@
     box-sizing: border-box;
 }
 
+body {
+    background: url(../images/bg.jpg);
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+
 .container {
     height: 60vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -20,6 +27,10 @@ header {
 
 header form {
     align-self: center;
+}
+
+.container div h1 {
+    font-family: "Lilita One", sans-serif;
 }
 
 .card {
