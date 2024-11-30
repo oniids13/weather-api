@@ -7,10 +7,14 @@
 body {
     background: url(../images/bg.jpg);
     font-family: "Roboto Condensed", sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 
 .container {
+    flex: 1;
     height: 60vh;
     display: flex;
     flex-direction: column;
@@ -35,7 +39,7 @@ header form {
 
 .card {
     visibility: hidden;
-    border: 1px solid black;
+    border: none;
     border-radius: 20px;
     text-align: center;
     padding: 10px;
@@ -55,7 +59,7 @@ header form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 1px solid black;
+    border: none;
     padding: 5px;
     height: 100px;
     width: 170px;
@@ -70,7 +74,8 @@ header form {
 }
 
 .top {
-    border: 1px solid black;
+    border: none;
+    font-size: 20px;
     border-radius: 10px;
     padding:  10px;
     background-color: #76de8a;
@@ -88,4 +93,13 @@ input {
     border: none;
     height: 30px;
     padding: 5px;
+}
+
+.condition {
+    padding-top: 10px;
+}
+
+footer {
+    text-align: center;
+    height: 40px;
 }

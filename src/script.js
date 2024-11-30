@@ -82,12 +82,17 @@ function greeting() {
 
     if (currentTime < 12) {
         greet.textContent = "Good Morning! 🌞"
-    } else if (currentTime > 12 || currentTime < 18) {
+    } else if (currentTime > 12 && currentTime < 18) {
         greet.textContent = "Good Afternoon! ⛅"
     } else {
         greet.textContent = "Good Evening! 🌙"
     }
 }
+
+const footerYear = document.querySelector(".year")
+const d = new Date()
+footerYear.textContent = d.getFullYear()
+
 
 getLocation()
 greeting()
