@@ -28,6 +28,7 @@ async function getWeather(location) {
 
 function getLocation() {
     const input = document.querySelector('input')
+    const card = document.querySelector('.card')
     const button = document.querySelector('button')
     const location = document.querySelector('.location')
     const desc = document.querySelector('.desc')
@@ -37,22 +38,36 @@ function getLocation() {
     const condition = document.querySelector('.condition')
     const rise = document.querySelector('.rise')
     const set = document.querySelector('.set')
+    const error = document.querySelector('.error')
 
     button.addEventListener("click", async (e) => {
         e.preventDefault()
         const loc = input.value;
         const weatherData = await getWeather(loc)
-        
-        console.log(weatherData)
+        if (weatherData === 'No location found.') {
+            error.textContent = weatherData
+            card.style.visibility = 'hidden'
+        } else {
+            const temperature = parseFloat(weatherData.temp)
+            const tempCelcius = ((temperature - 32) * (5/9)).toFixed(1)
+            const feelslike = parseFloat(weatherData.feels)
+            const feelslikeCelcius = ((feelslike - 32) * (5/9)).toFixed(1)
 
-        location.textContent = weatherData.location
-        desc.textContent = weatherData.desc
-        temp.textContent = weatherData.temp
-        feels.textContent = weatherData.feels
-        humid.textContent = weatherData.humidity
-        condition.textContent = weatherData.condition
-        rise.textContent = weatherData.sunrise
-        set.textContent = weatherData.sunset
+            card.style.visibility = 'visible'
+            error.textContent = ''
+
+            location.textContent = weatherData.location
+            desc.textContent = weatherData.desc
+            temp.textContent = `🌡️Temp: ${tempCelcius}° C`
+            feels.textContent = `🌡️ Feels like: ${feelslikeCelcius}° C`
+            humid.textContent = `💦 Humidity: ${weatherData.humidity}%`
+            condition.textContent = weatherData.condition
+            rise.textContent = `🌅 Sunrise: ${weatherData.sunrise}`
+            set.textContent = `🌇 Sunset: ${weatherData.sunset}`
+        }
+        
+
+        input.value = ''
 
         
     })
@@ -63,13 +78,14 @@ function greeting() {
     const greet = document.querySelector('.greet')
     const time = new Date()
     const currentTime = time.getHours()
+    console.log(currentTime)
 
     if (currentTime < 12) {
-        greet.textContent = "Good Morning!"
-    } else if (currentTime > 12 && currentTime < 6) {
-        greet.textContent = "Good Afternoon!"
+        greet.textContent = "Good Morning! 🌞"
+    } else if (currentTime > 12 || currentTime < 18) {
+        greet.textContent = "Good Afternoon! ⛅"
     } else {
-        greet.textContent = "Good Evening!"
+        greet.textContent = "Good Evening! 🌙"
     }
 }
 
