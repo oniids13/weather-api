@@ -19,7 +19,7 @@ A simple, responsive web application that fetches and displays current weather i
 - HTML5
 - CSS3
 - JavaScript (ES6)
-- [Weather API](https://openweathermap.org/api) *(Replace with the actual API used)*
+- [Weather API](https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/)
 
 ## 🚀 Getting Started
 
