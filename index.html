@@ -3,55 +3,96 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My weather App</title>
+    <title>Weather Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Lilita+One&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./src/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
-    <header>
-      <h1>Weather App</h1>
-      <form>
-        <label for="loc">Enter your location:</label>
-        <input type="text" name="loc" id="loc" />
-        <button type="submit">Hit me!</button>
-      </form>
-    </header>
-    <div class="container">
-      <div class="header">
-        <h1 class="greet">Good Evening!</h1>
-        <h2 class="today"></h2>
-        <h3 class="time"></h3>
-        <h2 class="error"></h2>
-      </div>
-      <div class="card">
-        <div class="top">
-          <h2 class="location"></h2>
-          <p class="desc"></p>
-          <p class="condition"></p>
+    <div class="app-container">
+      <header>
+        <div class="logo">
+          <i class="fas fa-cloud-sun"></i>
+          <h1>Weather Dashboard</h1>
         </div>
-        <div class="bot">
-          <div class="left">
-            <p class="temp"></p>
-            <p class="feels"></p>
-            <p class="humid"></p>
+        <form class="search-form">
+          <div class="search-container">
+            <input
+              type="text"
+              name="loc"
+              id="loc"
+              placeholder="Search location..."
+            />
+            <button type="submit"><i class="fas fa-search"></i></button>
           </div>
-          <div class="right">
-            <p class="rise"></p>
-            <p class="set"></p>
+        </form>
+      </header>
+
+      <main>
+        <div class="greeting-container">
+          <h2 class="greet">Good Evening!</h2>
+          <div class="date-container">
+            <h3 class="today"></h3>
+            <h3 class="time"></h3>
+          </div>
+          <p class="error"></p>
+        </div>
+
+        <div class="weather-card">
+          <div class="weather-header">
+            <h2 class="location"></h2>
+            <div class="weather-icon">
+              <!-- Weather icon will be inserted dynamically -->
+            </div>
+          </div>
+
+          <div class="weather-body">
+            <div class="primary-info">
+              <div class="temperature-container">
+                <h2 class="temp"></h2>
+                <p class="feels"></p>
+              </div>
+              <div class="condition-container">
+                <p class="condition"></p>
+                <p class="desc"></p>
+              </div>
+            </div>
+
+            <div class="weather-details">
+              <div class="detail-item">
+                <i class="fas fa-droplet"></i>
+                <p class="humid"></p>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-sun"></i>
+                <p class="rise"></p>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-moon"></i>
+                <p class="set"></p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </main>
+
+      <footer>
+        <p>&copy; <span class="year"></span> | Designed by Jose Dino Abaya</p>
+      </footer>
     </div>
-    <footer>&copy; <span class="year"></span> | Jose Dino Abaya</footer>
+
+    <div class="loading-container">
+      <div class="loading-spinner"></div>
+    </div>
+
     <script src="./src/script.js"></script>
   </body>
 </html>
