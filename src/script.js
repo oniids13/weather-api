@@ -1,6 +1,7 @@
 const apiUrl =
   "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
 const apiKey = "8BYVAYTBZNJCGJYP7WQVCVKC2";
+<<<<<<< HEAD
 
 // Weather icon mapping
 const weatherIcons = {
@@ -18,15 +19,20 @@ const weatherIcons = {
   "thunder-rain": "fa-cloud-bolt",
   default: "fa-cloud",
 };
+=======
+>>>>>>> 9cb148285d8cb6343d466817080734d83cab2b05
 
 async function getWeather(location) {
   try {
     const response = await fetch(`${apiUrl}${location}?key=${apiKey}`);
+<<<<<<< HEAD
 
     if (!response.ok) {
       throw new Error(`Error: ${response.status}`);
     }
 
+=======
+>>>>>>> 9cb148285d8cb6343d466817080734d83cab2b05
     const data = await response.json();
     const weatherInfo = {
       location: data.resolvedAddress,
@@ -41,6 +47,7 @@ async function getWeather(location) {
     };
     return weatherInfo;
   } catch (err) {
+<<<<<<< HEAD
     console.error("Weather API Error:", err);
     return "error";
   }
@@ -76,10 +83,55 @@ function setupEventListeners() {
     } else {
       updateWeatherUI(weatherData);
       weatherCard.style.display = "block";
+=======
+    return "No location found.";
+  }
+}
+
+function getLocation() {
+  const input = document.querySelector("input");
+  const card = document.querySelector(".card");
+  const button = document.querySelector("button");
+  const location = document.querySelector(".location");
+  const desc = document.querySelector(".desc");
+  const temp = document.querySelector(".temp");
+  const feels = document.querySelector(".feels");
+  const humid = document.querySelector(".humid");
+  const condition = document.querySelector(".condition");
+  const rise = document.querySelector(".rise");
+  const set = document.querySelector(".set");
+  const error = document.querySelector(".error");
+
+  button.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const loc = input.value;
+    const weatherData = await getWeather(loc);
+    if (weatherData === "No location found.") {
+      error.textContent = weatherData;
+      card.style.visibility = "hidden";
+    } else {
+      const temperature = parseFloat(weatherData.temp);
+      const tempCelcius = ((temperature - 32) * (5 / 9)).toFixed(1);
+      const feelslike = parseFloat(weatherData.feels);
+      const feelslikeCelcius = ((feelslike - 32) * (5 / 9)).toFixed(1);
+
+      card.style.visibility = "visible";
+      error.textContent = "";
+
+      location.textContent = weatherData.location;
+      desc.textContent = weatherData.desc;
+      temp.textContent = `🌡️Temp: ${tempCelcius}° C`;
+      feels.textContent = `🌡️ Feels like: ${feelslikeCelcius}° C`;
+      humid.textContent = `💦 Humidity: ${weatherData.humidity}%`;
+      condition.textContent = weatherData.condition;
+      rise.textContent = `🌅 Sunrise: ${weatherData.sunrise}`;
+      set.textContent = `🌇 Sunset: ${weatherData.sunset}`;
+>>>>>>> 9cb148285d8cb6343d466817080734d83cab2b05
     }
 
     input.value = "";
   });
+<<<<<<< HEAD
 }
 
 function showError(message) {
@@ -198,3 +250,40 @@ function initApp() {
 
 // Start the app when DOM is loaded
 document.addEventListener("DOMContentLoaded", initApp);
+=======
+}
+
+function greeting() {
+  const greet = document.querySelector(".greet");
+  const dateAndTime = document.querySelector(".time");
+  const greetToday = document.querySelector(".today");
+  const time = new Date();
+  const currentTime = time.getHours();
+  console.log(currentTime);
+
+  if (currentTime < 12) {
+    greet.textContent = "Good Morning! 🌞";
+  } else if (currentTime > 12 && currentTime < 18) {
+    greet.textContent = "Good Afternoon! ⛅";
+  } else {
+    greet.textContent = "Good Evening! 🌙";
+  }
+
+  const weekday = time.toLocaleDateString("en-US", { weekday: "long" });
+  const month = time.toLocaleDateString("en-US", { month: "long" });
+  const day = time.getDate().toString().padStart(2, "0");
+  const year = time.getFullYear();
+
+  const formattedDate = `${weekday} ${month} ${day}, ${year}`;
+
+  greetToday.textContent = "Today is";
+  dateAndTime.textContent = formattedDate;
+}
+
+const footerYear = document.querySelector(".year");
+const d = new Date();
+footerYear.textContent = d.getFullYear();
+
+getLocation();
+greeting();
+>>>>>>> 9cb148285d8cb6343d466817080734d83cab2b05

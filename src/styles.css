@@ -304,6 +304,7 @@ footer {
   .primary-info {
     flex-direction: column;
     text-align: center;
+<<<<<<< HEAD
     gap: 20px;
   }
 
@@ -350,4 +351,11 @@ body.loading .loading-container {
   100% {
     transform: rotate(360deg);
   }
+=======
+    height: 40px;
+}
+
+.header {
+    text-align: center;
+>>>>>>> 9cb148285d8cb6343d466817080734d83cab2b05
 }
